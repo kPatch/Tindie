@@ -1,6 +1,9 @@
 package com.activity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -99,19 +102,18 @@ public class User extends CustomActivity {
 	}	
 	*/
 	
-	//@Override
-	
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode,
 			final Intent imageReturnedIntent) {
 		super.onActivityResult(requestCode, resultCode, imageReturnedIntent);
 
 		switch (requestCode) {
-		case 1:
+		case CAMERA_REQUEST:
 			if (resultCode == RESULT_OK) {
 
 				try {
 					Uri selectedImage = imageReturnedIntent.getData();
-
+					/*
 					Cursor cursor = MediaStore.Images.Thumbnails
 							.queryMiniThumbnails(getContentResolver(),
 									selectedImage,
@@ -123,7 +125,19 @@ public class User extends CustomActivity {
 								.getString(cursor
 										.getColumnIndex(MediaStore.Images.Thumbnails.DATA));
 					}
+					*/
 
+					////////
+	                    InputStream imageStream = null;
+	                    try {
+	                        imageStream = getContentResolver().openInputStream(selectedImage);
+	                    } catch (FileNotFoundException e) {
+	                        // TODO Auto-generated catch block
+	                        e.printStackTrace();
+	                    }
+	                    Bitmap yourSelectedImage = BitmapFactory.decodeStream(imageStream);
+					
+					///
 					// bmpSelectedImage = getThumbnail(selectedImage);
 					//set_img_camera.setImageBitmap(bmpSelectedImage);
 					//ImageView img = (ImageView)findViewById(R.id.);
@@ -133,22 +147,32 @@ public class User extends CustomActivity {
 					
 					
 					String[] filePathColumn = {MediaStore.Images.Media.DATA};
+					/*
 					 int columnIndex = cursor.getColumnIndex(filePathColumn[0]);
 					 String filePath = cursor.getString(columnIndex);
 					 cursor.close();
 					 Bitmap bMap = BitmapFactory.decodeFile(filePath);
+					 */
+					
 					 
-					 
-					 Bitmap ThumbImage = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(filePath), 
+					 Bitmap ThumbImage = ThumbnailUtils.extractThumbnail(BitmapFactory.decodeFile(filePathColumn[0]), 
 			                    THUMBSIZE, THUMBSIZE);
 					 
 					 ImageView theImageView = (ImageView) this
 			                    .findViewById(R.id.userImage);
-					//theImageView.setImageBitmap(bMap);
-					 theImageView.setImageBitmap(ThumbImage);
+					 
+					 final int THUMBNAIL_SIZE = 140;
+					 Bitmap imageBitmap = Bitmap.createScaledBitmap(yourSelectedImage, THUMBNAIL_SIZE, THUMBNAIL_SIZE, false);
+					 
+			            ByteArrayOutputStream baos = new ByteArrayOutputStream();  
+			            imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+					 
+					 //theImageView.setImageBitmap(yourSelectedImage);
+			            theImageView.setImageBitmap(imageBitmap);
 
 				} catch (Exception e) {
 					Log.d("image error", e.toString());
+					System.out.println("Error");
 				}
 
 			}

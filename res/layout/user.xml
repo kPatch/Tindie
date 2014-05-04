@@ -77,7 +77,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/pad_10dp"
             android:layout_marginTop="@dimen/pad_5dp"
-            android:drawableLeft="@drawable/ic_pwd"
+            android:drawableLeft="@drawable/ic_username"
             android:inputType="number"
             android:hint="@string/age">
         </EditText>
