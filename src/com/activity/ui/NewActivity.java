@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.activity.R;
 
@@ -18,6 +19,11 @@ import com.activity.R;
 public class NewActivity extends Fragment
 {
 
+	
+	private int tedarr[] = {R.drawable.teddy_up,R.drawable.teddy_right, 
+			R.drawable.teddy_down, R.drawable.teddy_left};
+	private int tedctn = 1;
+	
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
 	 */
@@ -41,6 +47,19 @@ public class NewActivity extends Fragment
 	 */
 	private void setupView(View v)
 	{
+		final ImageView TeddyView = (ImageView) v.findViewById(R.id.imageView1);
+		TeddyView.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v)
+			{
+
+				TeddyView.setImageResource(tedarr[tedctn++]);
+				tedctn %= 4;
+			}
+		});
+		
+		
 		final View sw = v.findViewById(R.id.vSwitch);
 		sw.setOnClickListener(new OnClickListener() {
 
