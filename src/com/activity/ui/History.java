@@ -22,7 +22,7 @@ import com.activity.R;
 public class History extends Fragment
 {
 
-
+	private int cd = 27;
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
 	 */
@@ -91,7 +91,6 @@ public class History extends Fragment
 		public View getView(int arg0, View v, ViewGroup arg2)
 		{
 			if (v == null){
-
 				v = getLayoutInflater(null)
 						.inflate(R.layout.history_item, null);
 			}

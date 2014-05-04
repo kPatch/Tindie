@@ -26,7 +26,7 @@
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
             android:background="@color/white" />
-
+<!-- 
         <Button
             android:id="@+id/tab2"
             style="@style/tab_btn"
@@ -42,14 +42,14 @@
             android:layout_marginBottom="15dp"
             android:layout_marginTop="15dp"
             android:background="@color/white" />
-
+  -->
         <Button
             android:id="@+id/tab3"
             style="@style/tab_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="@string/workouts" />
+            android:text="Data" />
 
         <View
             android:id="@+id/view1"
