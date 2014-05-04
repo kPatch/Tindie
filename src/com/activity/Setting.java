@@ -80,6 +80,7 @@ public class Setting extends CustomActivity
 	 */
 	private void setDummyContents()
 	{
+		/*
 		isRunning = true;
 		setTouchNClick(R.id.btnDemo);
 
@@ -114,6 +115,7 @@ public class Setting extends CustomActivity
 				}
 			}
 		}).start();
+		 */
 	}
-
+		
 }
