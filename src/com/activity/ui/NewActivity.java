@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.activity.R;
 
@@ -17,7 +18,8 @@ import com.activity.R;
  */
 public class NewActivity extends Fragment
 {
-
+	private int babysel = 1;
+	private int babyarr[] = {R.drawable.baby2,R.drawable.baby3,R.drawable.baby4};
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
 	 */
@@ -41,6 +43,18 @@ public class NewActivity extends Fragment
 	 */
 	private void setupView(View v)
 	{
+		final ImageView baby = (ImageView) v.findViewById(R.id.imageView1);
+		baby.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v)
+			{
+				
+				baby.setImageResource(babyarr[babysel++]);
+				babysel %= 3;
+			}
+		});
+		
 		final View sw = v.findViewById(R.id.vSwitch);
 		sw.setOnClickListener(new OnClickListener() {
 
