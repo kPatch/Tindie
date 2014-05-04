@@ -124,7 +124,7 @@
                 android:text="Music" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textView2_1"
                 style="@style/lbl_new_act_right"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
