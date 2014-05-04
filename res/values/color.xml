@@ -16,4 +16,9 @@
     <color name="background">#ECECEC</color>
     <color name="tab_bg_yellow">#FFA638</color>
     <color name="gray_border">#cfcfcf</color>
+    
+    <!-- Login -->
+    <color name="main_color_gray_dk">#3b3b3b</color>
+    <color name="main_color_green">#00b863</color>
+    <color name="gray_light">#e8e8e8</color>
 </resources>

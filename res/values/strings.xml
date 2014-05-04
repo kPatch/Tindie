@@ -15,5 +15,13 @@
     <string name="selected">Selected</string>
     <string name="tab">Tab</string>
     <string name="button">Button</string>
-
+    
+    <!-- Login -->
+    <string name="or">or</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="log_in">Log in</string>
+    <string name="forgot_my_pwd">I’ve forgotten my password?</string>
+    
 </resources>
