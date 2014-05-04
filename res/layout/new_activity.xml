@@ -78,7 +78,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="70 degrees" />
+                android:text="97 degrees F" />
         </LinearLayout>
         <View
             android:id="@+id/view1"
@@ -104,7 +104,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="120 bpm" />
+                android:text="70 bpm" />
         </LinearLayout>
         <View
             android:id="@+id/view1"
