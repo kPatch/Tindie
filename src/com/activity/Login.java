@@ -39,7 +39,8 @@ public class Login extends CustomActivity
 		super.onClick(v);
 		if (v.getId() != R.id.btnReg)
 		{
-			startActivity(new Intent(this, MainActivity.class));
+			//startActivity(new Intent(this, MainActivity.class));
+			startActivity(new Intent(this, User.class));
 			finish();
 		}
 	}

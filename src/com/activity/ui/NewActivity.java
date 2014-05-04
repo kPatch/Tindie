@@ -228,10 +228,13 @@ void beginListenForData()
 
                                 handler.post(new Runnable()
                                 {
+                                	int roll = 0;
                                     public void run()
                                     {
                                         myLabel.setText(data);
-                                        int roll = Integer.parseInt(data.split("\\s+")[2]);
+                                        if(data.split("\\s+").length == 3 ){
+                                        	roll = Integer.parseInt(data.split("\\s+")[2]);
+                                        }
                                         if( (roll >= 65 && roll <= 90) || (roll <= -70 && roll >= -90) ){
                                         	// down
                                         	TeddyView.setImageResource(tedarr[2]);
@@ -255,14 +258,23 @@ void beginListenForData()
                                         else if( (roll >= 0 && roll <= 10) || (roll <= 0 && roll >= -10)  ){
                                         	// up
                                         	TeddyView.setImageResource(tedarr[0]);
+                                        	if(mp.isPlaying()) {
+                                        		mp.stop();
+                                        	}
                                         }
                                         else if( roll > 10 && roll < 65  ) {
                                         	// right
                                         	TeddyView.setImageResource(tedarr[1]);
+                                        	if(mp.isPlaying()) {
+                                        		mp.stop();
+                                        	}
                                         }
                                         else if( roll <= -10 && roll > -50  ){
                                         	// left
                                         	TeddyView.setImageResource(tedarr[3]);
+                                        	if(mp.isPlaying()) {
+                                        		mp.stop();
+                                        	}
                                         }
                                     }
                                 });
