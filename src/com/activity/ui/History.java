@@ -6,8 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.activity.MainActivity;
 import com.activity.R;
 
 // TODO: Auto-generated Javadoc
@@ -19,6 +22,7 @@ import com.activity.R;
 public class History extends Fragment
 {
 
+
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
 	 */
@@ -27,7 +31,6 @@ public class History extends Fragment
 			Bundle savedInstanceState)
 	{
 		View v = inflater.inflate(R.layout.listview, null);
-
 		setupView(v);
 		return v;
 	}
@@ -60,7 +63,7 @@ public class History extends Fragment
 		@Override
 		public int getCount()
 		{
-			return 20;
+			return 10;
 		}
 
 		/* (non-Javadoc)
@@ -87,9 +90,11 @@ public class History extends Fragment
 		@Override
 		public View getView(int arg0, View v, ViewGroup arg2)
 		{
-			if (v == null)
+			if (v == null){
+
 				v = getLayoutInflater(null)
 						.inflate(R.layout.history_item, null);
+			}
 			return v;
 		}
 
