@@ -6,10 +6,14 @@ import java.io.OutputStream;
 import java.util.Set;
 import java.util.UUID;
 
+import android.app.AlertDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -37,7 +41,10 @@ public class NewActivity extends Fragment
 			R.drawable.teddy_down, R.drawable.teddy_left};
 	private int tedctn = 1;
 	
+	
+	
 	/**** */
+	private static Context context;
 	
 	EditText myTextbox;
 	BluetoothAdapter mBluetoothAdapter;
@@ -53,6 +60,8 @@ public class NewActivity extends Fragment
 	TextView myLabel;
 	
 	ImageView TeddyView;
+	MediaPlayer mp;
+	AlertDialog.Builder builder;
 	/* (non-Javadoc)
 	 * @see android.support.v4.app.Fragment#onCreateView(android.view.LayoutInflater, android.view.ViewGroup, android.os.Bundle)
 	 */
@@ -60,9 +69,18 @@ public class NewActivity extends Fragment
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState)
 	{
+		//context = this;
+		//Context context = NewActivity.context;
+		//Context context = getView().getContext();
+		
 		View v = inflater.inflate(R.layout.new_activity, null);
-
+	
 		setupView(v);
+		
+		
+		mp = MediaPlayer.create(getActivity(), R.raw.alarm);
+		builder = new AlertDialog.Builder(getActivity());
+		
 		return v;
 	}
 
@@ -217,6 +235,22 @@ void beginListenForData()
                                         if( (roll >= 65 && roll <= 90) || (roll <= -70 && roll >= -90) ){
                                         	// down
                                         	TeddyView.setImageResource(tedarr[2]);
+                                        	
+                                        	if(!mp.isPlaying()) {
+                                        		mp.start();
+	                            				//AlertDialog.Builder builder = new AlertDialog.Builder(context);
+	                            				builder.setMessage("FLIP THE BABY, NOW!!!!!!");
+	                            				
+	                            				builder.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+	                            					public void onClick(DialogInterface dialog,int id) {
+	                            						// if this button is clicked, close
+	                            						// current activity
+	                            						mp.stop();
+	                            					}
+	                            				  });
+	                            				AlertDialog alertDialog = builder.create();
+	                            				alertDialog.show();
+                                        	}
                                         }
                                         else if( (roll >= 0 && roll <= 10) || (roll <= 0 && roll >= -10)  ){
                                         	// up
