@@ -17,21 +17,6 @@
             android:gravity="center"
             android:orientation="vertical" >
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="DURATION"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="2:10:44"
-                android:textColor="@color/white"
-                android:textSize="50sp"
-                android:textStyle="normal" />
         </LinearLayout>
 
         <LinearLayout
@@ -44,7 +29,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="PAUSE" />
+                android:text="Heart Rate" />
 
             <Button
                 android:id="@+id/finish"
@@ -52,54 +37,12 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="FINISH" />
+                android:text="Temperature" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
+        
 
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/lbl_workout1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="DISTANCE" />
-
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/lbl_workout1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="AVG. SPEED" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1" >
-
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/lbl_workout2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="3.14km" />
-
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/lbl_workout2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="8.15km/h" />
-
-        </LinearLayout>
+        
 
         <View
             android:id="@+id/view1"
@@ -118,7 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="CALORIES" />
+                android:text="Date" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -126,7 +69,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="MAX SPEED" />
+                android:text="Sleep Duration" />
         </LinearLayout>
 
         <LinearLayout
@@ -141,7 +84,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="326" />
+                android:text="Dec 27" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -149,59 +92,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="9.256km/h" />
-
-        </LinearLayout>
-
-        <View
-            android:id="@+id/view1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/gray_border" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" >
-
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/lbl_workout1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="HEAERT BEAT" />
-
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/lbl_workout1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="WEATHER" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_weight="1" >
-
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/lbl_workout2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="112bpm" />
-
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/lbl_workout2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Sunny" />
+                android:text="10 hours" />
 
         </LinearLayout>
 
@@ -222,7 +113,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="DISTANCE" />
+                android:text="Avg Heart Rate" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -230,7 +121,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="AVG. SPEED" />
+                android:text="Avg Temperate" />
         </LinearLayout>
 <LinearLayout
             android:layout_width="match_parent"
@@ -239,7 +130,7 @@
             android:layout_weight="1" >
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewHeart"
                 style="@style/lbl_workout2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -247,7 +138,7 @@
                 android:text="3.14km" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/textViewTemp"
                 style="@style/lbl_workout2"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"

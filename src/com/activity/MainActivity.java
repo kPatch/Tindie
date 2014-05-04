@@ -117,7 +117,7 @@ public class MainActivity extends CustomActivity {
 	 */
 	private void initTabs() {
 		findViewById(R.id.tab1).setOnClickListener(this);
-		findViewById(R.id.tab2).setOnClickListener(this);
+		//findViewById(R.id.tab2).setOnClickListener(this);
 		findViewById(R.id.tab3).setOnClickListener(this);
 		findViewById(R.id.tab4).setOnClickListener(this);
 		setCurrentTab(0);
@@ -133,8 +133,8 @@ public class MainActivity extends CustomActivity {
 		super.onClick(v);
 		if (v.getId() == R.id.tab1)
 			pager.setCurrentItem(0, true);
-		else if (v.getId() == R.id.tab2)
-			pager.setCurrentItem(1, true);
+		//else if (v.getId() == R.id.tab2)
+			//pager.setCurrentItem(1, true);
 		else if (v.getId() == R.id.tab3)
 			pager.setCurrentItem(2, true);
 		else if (v.getId() == R.id.tab4)
@@ -154,8 +154,8 @@ public class MainActivity extends CustomActivity {
 			currentTab.setEnabled(true);
 		if (page == 0)
 			currentTab = findViewById(R.id.tab1);
-		else if (page == 1)
-			currentTab = findViewById(R.id.tab2);
+		//else if (page == 1)
+			//currentTab = findViewById(R.id.tab2);
 		else if (page == 2)
 			currentTab = findViewById(R.id.tab3);
 		else
@@ -213,11 +213,12 @@ public class MainActivity extends CustomActivity {
 		public Fragment getItem(int pos) {
 			if (pos == 0)
 				return new NewActivity();
+			//if (pos == 1)
+				//return new Routes();
 			if (pos == 1)
-				return new Routes();
-			if (pos == 2)
 				return new Workout();
-			return new History();
+				return new History();
+				
 		}
 
 		/*

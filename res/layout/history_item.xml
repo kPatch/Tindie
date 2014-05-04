@@ -5,7 +5,7 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
+        android:id="@+id/date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="DEC 27"
@@ -49,17 +49,10 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Slept for 5:40:10"
+        android:text="Slept for 10:00:10"
         android:textColor="@color/gray"
         />
-            <TextView
-        android:id="@+id/textView1"
-        android:textSize="13sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="75 AHR"
-        android:textColor="@color/gray"
-        />
+
         </LinearLayout>
 
         <ImageView
