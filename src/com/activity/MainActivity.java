@@ -11,7 +11,10 @@ import android.app.ActionBar;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -19,6 +22,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,6 +33,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.activity.custom.CustomActivity;
 import com.activity.ui.History;
@@ -44,12 +49,43 @@ import com.activity.ui.Workout;
  */
 public class MainActivity extends CustomActivity {
 
+	private static final int REQUEST_ENABLE_BT = 1;
+
 	/** The view pager for swipe views. */
 	private ViewPager pager;
 
 	/** The current selected tab. */
 	private View currentTab;
-
+	
+	/** The Bluetooth Broadcast Receiver*/
+	private final BroadcastReceiver mReceiver = new BroadcastReceiver(){
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			final String action = intent.getAction();
+			if(action.equals(BluetoothAdapter.ACTION_STATE_CHANGED)){
+				final int state = intent.getIntExtra(BluetoothAdapter.EXTRA_STATE,BluetoothAdapter.ERROR);
+				Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+				Toast toast;
+				switch(state) {
+				case BluetoothAdapter.STATE_OFF:
+					startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+					break;
+				case BluetoothAdapter.STATE_TURNING_OFF:
+					toast =Toast.makeText(getApplicationContext(), "Tindie requires Bluetooth", Toast.LENGTH_LONG);
+					toast.show();
+					break;
+				case BluetoothAdapter.STATE_ON:
+					toast =Toast.makeText(getApplicationContext(), "Press On to connect to your Tindie device", Toast.LENGTH_LONG);
+					//toast.setGravity(Gravity.TOP|Gravity.LEFT, 0, 0);
+					toast.setGravity(Gravity.TOP, 0, 0);
+					toast.show();
+					break;
+				}
+			}
+		}
+	};	
+	
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -64,36 +100,29 @@ public class MainActivity extends CustomActivity {
 		initTabs();
 		initPager();//textView2_1
 		System.out.println(" Before myLabel");
-		/*
-		myLabel = (TextView)findViewById(R.id.MotionAngleValue);
-		ImageView button01 = (ImageView) findViewById(R.id.on);
-		System.out.println(" Before OnClickListener");
-		button01.setOnClickListener(new OnClickListener() {
-			int button01pos = 0;
-			public void onClick(View v) {
-				System.out.println("onClick");
-				if (button01pos == 0) {
-					// button01.setImageResource(R.drawable.image01);
-					try {
-						findBT();
-						openBT();
-					} catch (IOException ex) {
-					}
-					button01pos = 1;
-				} else if (button01pos == 1) {
-					// button01.setImageResource(R.drawable.image02);
-		            try 
-		            {
-		                closeBT();
-		            }
-		            catch (IOException ex) { }
-					button01pos = 0;
-				}
-				
-			}
-		});
-		*/
 		
+		BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+		if(mBluetoothAdapter == null) {
+			CharSequence text = "Oops! Your device does ont support bluetooth.";
+			Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
+			toast.show();
+		}
+		
+		if(!mBluetoothAdapter.isEnabled()) {
+			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+			startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+		}
+		
+		
+		// Register a receiver for Bluetooth Adapter state change
+		IntentFilter filter = new IntentFilter(BluetoothAdapter.ACTION_STATE_CHANGED);
+		this.registerReceiver(mReceiver, filter);
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		this.unregisterReceiver(mReceiver);
 	}
 
 	/**

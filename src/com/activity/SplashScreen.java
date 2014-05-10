@@ -7,6 +7,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.MotionEvent;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -102,6 +103,37 @@ public class SplashScreen extends Activity
 			return true;
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+	
+	/*
+	 * Skip the Splash Screen on Touch Down
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onTouchEvent(android.view.MotionEvent)
+	 */
+	@Override
+	public boolean onTouchEvent(MotionEvent event){
+		// get pointer index from the event object
+		int pointerIndex = event.getActionIndex();
+		
+		// get ponter ID
+		int pointerID = event.getPointerId(pointerIndex);
+		
+		// get masked (not specific to a pointer) action
+		int maskedAction = event.getActionMasked();
+		
+		if(maskedAction == MotionEvent.ACTION_DOWN){
+			if (isRunning)
+			{
+				isRunning = false;
+				//Intent i = new Intent(SplashScreen.this, MainActivity.class);
+				Intent i = new Intent(SplashScreen.this, Login.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(i);
+				finish();
+			}
+		}
+		return super.onTouchEvent(event);
+		
 	}
 
 }
